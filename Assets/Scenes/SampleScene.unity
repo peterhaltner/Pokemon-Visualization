@@ -145,7 +145,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -264,6 +264,139 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -55.084003, z: 0}
+--- !u!1 &938062412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 938062414}
+  - component: {fileID: 938062413}
+  - component: {fileID: 938062415}
+  m_Layer: 0
+  m_Name: SceneController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &938062413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938062412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8216316ce6b808459c1a5e95cacb58d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pokemonNodePrefab: {fileID: 4722776261811913438, guid: da282af275e3b9b4380382a999a4f26b,
+    type: 3}
+  _pokemonNodesRoot: {fileID: 1899634041}
+--- !u!4 &938062414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938062412}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &938062415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938062412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b05e589787fe60f4ca0f4713b18ca278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bugMaterial: {fileID: 2100000, guid: 2c74db624227a294f8ac206472b7774d, type: 2}
+  _darkMaterial: {fileID: 2100000, guid: df0ebcd048923de45883a6a7cb2ab25e, type: 2}
+  _dragonMaterial: {fileID: 2100000, guid: ae29632552e40f4438ea702ba5fb3df4, type: 2}
+  _electricMaterial: {fileID: 2100000, guid: e91e49e3620a8b548894875409d31881, type: 2}
+  _fairyMaterial: {fileID: 2100000, guid: 3bda59324e02a9a43b199ccf2801ecfc, type: 2}
+  _fightingMaterial: {fileID: 2100000, guid: b24294a460547c44786b4a64dea895ca, type: 2}
+  _fireMaterial: {fileID: 2100000, guid: 92f82d6048b455c4f88348b3c5041c97, type: 2}
+  _flyingMaterial: {fileID: 2100000, guid: 048aecefc97deb249af061290b610705, type: 2}
+  _ghostMaterial: {fileID: 2100000, guid: 91ac9e738e5d53745aef752577ab034e, type: 2}
+  _grassMaterial: {fileID: 2100000, guid: 27005f843669c494ebb6480cbbf5f7ce, type: 2}
+  _groundMaterial: {fileID: 2100000, guid: f1e8ab14265f6ff4289e15bbb83b1748, type: 2}
+  _iceMaterial: {fileID: 2100000, guid: bb0eee69db0d920499a464395537840f, type: 2}
+  _normalMaterial: {fileID: 2100000, guid: 789ea9a245031934fb201c7e392612cb, type: 2}
+  _poisonMaterial: {fileID: 2100000, guid: 84280a9dee6b32d45ab45dcb692f3615, type: 2}
+  _psychicMaterial: {fileID: 2100000, guid: 7f176709bf06f1849bdfde083b578dc2, type: 2}
+  _rockMaterial: {fileID: 2100000, guid: 9daacd63913062e40a968f86dc350c30, type: 2}
+  _steelMaterial: {fileID: 2100000, guid: 553f9353b9803c740857032c80e27143, type: 2}
+  _waterMaterial: {fileID: 2100000, guid: 0150cf45f812bc04f801d45c144c6660, type: 2}
+  _bugTransMaterial: {fileID: 2100000, guid: f5be8e9f835293a4dbe77d503eb79f27, type: 2}
+  _darkTransMaterial: {fileID: 2100000, guid: fd107504124a9ea428c24067df4da321, type: 2}
+  _dragonTransMaterial: {fileID: 2100000, guid: 788b9eb98ac19964e9efc869231be78e,
+    type: 2}
+  _electricTransMaterial: {fileID: 2100000, guid: 6bb7d77a2b2370147982e388a667b3e4,
+    type: 2}
+  _fairyTransMaterial: {fileID: 2100000, guid: fb9bbe053ca055f4a99a1afc78a3ae6d, type: 2}
+  _fightingTransMaterial: {fileID: 2100000, guid: 454930ad925b8db4f88f89536e44f97d,
+    type: 2}
+  _fireTransMaterial: {fileID: 2100000, guid: 28a85d2a5431c1c41b113dce6556fdd7, type: 2}
+  _flyingTransMaterial: {fileID: 2100000, guid: 22b342dc44e400346b9abf51f1b4fc60,
+    type: 2}
+  _ghostTransMaterial: {fileID: 2100000, guid: 9191a16e6b8397a44b20d34c1d325333, type: 2}
+  _grassTransMaterial: {fileID: 2100000, guid: bf5042d9a98d68d4e8602f067b2ed91d, type: 2}
+  _groundTransMaterial: {fileID: 2100000, guid: 5ecaa2295c957e943860c28b92b6c1e2,
+    type: 2}
+  _iceTransMaterial: {fileID: 2100000, guid: a297d49e22062bf4ab9db4a4b48c1946, type: 2}
+  _normalTransMaterial: {fileID: 2100000, guid: d092aa9ee0bec2141be9409b9b5db511,
+    type: 2}
+  _poisonTransMaterial: {fileID: 2100000, guid: 5124e3f5a2d95a141999785c5781af88,
+    type: 2}
+  _psychicTransMaterial: {fileID: 2100000, guid: 47c93389461d7d9428b1ef20586a4dc2,
+    type: 2}
+  _rockTransMaterial: {fileID: 2100000, guid: a85d4f72e273d5346a894f35bf58b94c, type: 2}
+  _steelTransMaterial: {fileID: 2100000, guid: bf08de97e85107d4e90c25a9b40ba821, type: 2}
+  _waterTransMaterial: {fileID: 2100000, guid: dafcd4a38495d684e8aa0ebcc74cd691, type: 2}
+--- !u!1 &1899634040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1899634041}
+  m_Layer: 0
+  m_Name: PokemonNodes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1899634041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899634040}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3159765319480243183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -275,6 +408,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PokemonNode
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722776261811913438, guid: da282af275e3b9b4380382a999a4f26b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4722776261812150014, guid: da282af275e3b9b4380382a999a4f26b,
         type: 3}
