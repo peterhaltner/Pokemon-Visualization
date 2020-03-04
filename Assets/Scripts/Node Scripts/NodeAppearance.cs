@@ -21,6 +21,7 @@ public class NodeAppearance : MonoBehaviour
     Renderer _type2Renderer;
 
     Behaviour _halo;
+    Light _light;
 
     //Set default appearance
     public void SetupAppearance()
@@ -56,6 +57,12 @@ public class NodeAppearance : MonoBehaviour
 
         //Enable if legendary
         _halo.enabled = _nodeInformationController.IsLegendary;
+
+        //Get the light
+        _light = GetComponent<Light>();
+
+        //Temporarily move 
+        transform.position = new Vector3(_nodeInformationController.HP, _nodeInformationController.Attack/*, _nodeInformationController.Speed*/);
     }
 
     public void SetTransparent(bool isTransparent)
@@ -70,5 +77,15 @@ public class NodeAppearance : MonoBehaviour
             _type1Renderer.material = _type1Material;
             _type2Renderer.material = _type2Material;
         }
+    }
+
+    public void SetLightActive(bool enabled)
+    {
+        _light.enabled = enabled;
+    }
+
+    public void SetLightColor(Color lightColor)
+    {
+        _light.color = lightColor;
     }
 }
