@@ -8,13 +8,13 @@ public class FilterHandler : MonoBehaviour
 {
     [SerializeField] DataHandler _dataHandler;
 
-    enum FilterType
+    public enum FilterType
     {
         CanMatchAny,
         MustMatchAll,
     }
 
-    enum GenerationFilters
+    public enum GenerationFilters
     {
         Default,
         Gen1,
@@ -32,14 +32,40 @@ public class FilterHandler : MonoBehaviour
 
     string _nameFilter = "";
 
-    bool? _legendaryFilter; //null means any
+    bool? _mustBeLegendary; //null means any
 
     void Start()
     {
+        _mustBeLegendary = false;
         ApplyFilters();
     }
 
-    public void ApplyFilters()
+    public void SetNameFilter(string nameFilter)
+    {
+        _nameFilter = nameFilter;
+        ApplyFilters();
+    }
+
+    public void SetTypeFilters(List<TypeHelper.Type> typeFilters, FilterType filterType)
+    {
+        _activeTypeFilters = typeFilters;
+        _typeFilterType = filterType;
+        ApplyFilters();
+    }
+
+    public void SetGenerationFilters(List<GenerationFilters> generationFilters)
+    {
+        _activeGenerationFilters = generationFilters;
+        ApplyFilters();
+    }
+
+    public void SetMustBeLegendaryFilter(bool? mustBeLegendary)
+    {
+        _mustBeLegendary = mustBeLegendary;
+        ApplyFilters();
+    }
+
+    void ApplyFilters()
     {
         foreach(var node in _dataHandler.PokemonNodes)
         {
@@ -113,9 +139,25 @@ public class FilterHandler : MonoBehaviour
                 isFilteredOut = !_activeGenerationFilters.Contains(nodeGeneration);
             }
 
+            //Legendary filter
+            if(!isFilteredOut && _mustBeLegendary.HasValue)
+            {
+                if (_mustBeLegendary.Value == false && nodeInfo.IsLegendary == false)
+                {
+                    isFilteredOut = false;
+                }
+                else if (_mustBeLegendary.Value == true && nodeInfo.IsLegendary == true)
+                {
+                    isFilteredOut = false;
+                }
+                else
+                {
+                    isFilteredOut = true;
+                }
+            }
+
             //Apply filtering applications
             node.GetComponent<NodeStateController>().SetActive(!isFilteredOut);
         }
     }
-
 }
