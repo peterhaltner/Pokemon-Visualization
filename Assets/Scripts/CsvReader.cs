@@ -6,6 +6,7 @@ public class CsvReader : MonoBehaviour
 {
     [SerializeField] GameObject _pokemonNodePrefab;
     [SerializeField] Transform _pokemonNodesRoot;
+    [SerializeField] DataHandler _dataHandler;
 
     const string _csvPath = "Assets/Data/Pokemon.csv"; //path to Pokemon database
 
@@ -27,7 +28,7 @@ public class CsvReader : MonoBehaviour
         Legendary
     }
 
-    void Start()
+    void Awake()
     {
         string rawData = System.IO.File.ReadAllText(_csvPath); //Read the database file
 
@@ -39,6 +40,8 @@ public class CsvReader : MonoBehaviour
             string[] pokemonData = (rawDataLines[i].Trim()).Split(","[0]); //Gather Data for Pokemon
 
             var pokemonNode = GameObject.Instantiate(_pokemonNodePrefab, _pokemonNodesRoot); //Instaniate a new node for Pokemon
+
+            _dataHandler.AddPokemonNode(pokemonNode);
 
             //Update Pokemon node information with data values
             pokemonNode.GetComponent<NodeInformationController>().SetNodeInformation(

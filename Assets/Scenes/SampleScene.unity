@@ -315,10 +315,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookSpeedH: 2
   lookSpeedV: 2
-  zoomSpeed: 2
-  dragSpeed: 6
-  moveSpeed: 14
-  shiftMultipler: 3
+  zoomSpeed: 50
+  dragSpeed: 80
+  moveSpeed: 50
+  shiftMultipler: 6
 --- !u!1 &938062412
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,6 +331,8 @@ GameObject:
   - component: {fileID: 938062413}
   - component: {fileID: 938062415}
   - component: {fileID: 938062416}
+  - component: {fileID: 938062417}
+  - component: {fileID: 938062418}
   m_Layer: 0
   m_Name: SceneController
   m_TagString: Untagged
@@ -353,6 +355,7 @@ MonoBehaviour:
   _pokemonNodePrefab: {fileID: 4722776261811913438, guid: da282af275e3b9b4380382a999a4f26b,
     type: 3}
   _pokemonNodesRoot: {fileID: 1899634041}
+  _dataHandler: {fileID: 938062418}
 --- !u!4 &938062414
 Transform:
   m_ObjectHideFlags: 0
@@ -436,6 +439,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 534669904}
+--- !u!114 &938062417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938062412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83fce43a8c4fe6b4bb906b814f8c8f2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dataHandler: {fileID: 938062418}
+--- !u!114 &938062418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938062412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b04653d2fdcd57b4c9e75b9f832054e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1029683595
 GameObject:
   m_ObjectHideFlags: 0

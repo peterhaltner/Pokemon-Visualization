@@ -22,6 +22,7 @@ public class NodeAppearance : MonoBehaviour
 
     Behaviour _halo;
     Light _light;
+    SphereCollider _collider;
 
     //Set default appearance
     public void SetupAppearance()
@@ -61,8 +62,11 @@ public class NodeAppearance : MonoBehaviour
         //Get the light
         _light = GetComponent<Light>();
 
+        //Get the collider
+        _collider = GetComponent<SphereCollider>();
+
         //Temporarily move 
-        transform.position = new Vector3(_nodeInformationController.HP, _nodeInformationController.Attack/*, _nodeInformationController.Speed*/);
+        transform.position = new Vector3(_nodeInformationController.HP, _nodeInformationController.Attack, _nodeInformationController.Speed);
     }
 
     public void SetTransparent(bool isTransparent)
@@ -71,11 +75,15 @@ public class NodeAppearance : MonoBehaviour
         {
             _type1Renderer.material = _type1TransparentMaterial;
             _type2Renderer.material = _type2TransparentMaterial;
+            _halo.enabled = false;
+            _collider.enabled = false;
         }
         else
         {
             _type1Renderer.material = _type1Material;
             _type2Renderer.material = _type2Material;
+            _halo.enabled = _nodeInformationController.IsLegendary;
+            _collider.enabled = true;
         }
     }
 
