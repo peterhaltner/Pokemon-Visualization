@@ -36,7 +36,6 @@ public class FilterHandler : MonoBehaviour
 
     void Start()
     {
-        _mustBeLegendary = false;
         ApplyFilters();
     }
 

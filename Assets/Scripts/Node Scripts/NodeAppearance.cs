@@ -64,9 +64,6 @@ public class NodeAppearance : MonoBehaviour
 
         //Get the collider
         _collider = GetComponent<SphereCollider>();
-
-        //Temporarily move 
-        transform.position = new Vector3(_nodeInformationController.HP, _nodeInformationController.Attack, _nodeInformationController.Speed);
     }
 
     public void SetTransparent(bool isTransparent)
