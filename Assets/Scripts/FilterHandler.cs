@@ -25,6 +25,8 @@ public class FilterHandler : MonoBehaviour
         Gen6,
     }
 
+    public int NumberPokemonFilterMatched { get; private set; }
+
     List<GenerationFilters> _activeGenerationFilters = new List<GenerationFilters>();
 
     List<TypeHelper.Type> _activeTypeFilters = new List<TypeHelper.Type>();
@@ -36,9 +38,9 @@ public class FilterHandler : MonoBehaviour
 
     void Start()
     {
-        List<GenerationFilters> filters = new List<GenerationFilters>();
-        filters.Add(GenerationFilters.Gen1);
-        SetGenerationFilters(filters);
+        //List<GenerationFilters> filters = new List<GenerationFilters>();
+        //filters.Add(GenerationFilters.Gen1);
+        //SetGenerationFilters(filters);
         ApplyFilters();
     }
 
@@ -69,6 +71,8 @@ public class FilterHandler : MonoBehaviour
 
     void ApplyFilters()
     {
+        int numFilterMatched = 0;
+
         foreach(var node in _dataHandler.PokemonNodes)
         {
             bool isFilteredOut = false;
@@ -160,6 +164,13 @@ public class FilterHandler : MonoBehaviour
 
             //Apply filtering applications
             node.GetComponent<NodeStateController>().SetActive(!isFilteredOut);
+
+            if(!isFilteredOut)
+            {
+                numFilterMatched++;
+            }
         }
+
+        NumberPokemonFilterMatched = numFilterMatched;
     }
 }

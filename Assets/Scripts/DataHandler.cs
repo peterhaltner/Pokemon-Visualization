@@ -26,6 +26,7 @@ public class DataHandler : MonoBehaviour
     }
 
     public List<GameObject> PokemonNodes { get { return _pokemonNodes; } }
+    public int NumberOfPokemon { get { return _pokemonNodes.Count; } }
 
     [SerializeField] AxisController _axisController;
 
