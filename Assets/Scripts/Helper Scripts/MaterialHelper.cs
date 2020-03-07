@@ -65,7 +65,7 @@ public class MaterialHelper : MonoBehaviour
                 case TypeHelper.Type.Flying:
                     return _flyingMaterial;
                 case TypeHelper.Type.Ghost:
-                    return _flyingMaterial;
+                    return _ghostMaterial;
                 case TypeHelper.Type.Grass:
                     return _grassMaterial;
                 case TypeHelper.Type.Ground:
@@ -110,7 +110,7 @@ public class MaterialHelper : MonoBehaviour
                 case TypeHelper.Type.Flying:
                     return _flyingTransMaterial; ;
                 case TypeHelper.Type.Ghost:
-                    return _flyingTransMaterial; ;
+                    return _ghostTransMaterial; ;
                 case TypeHelper.Type.Grass:
                     return _grassTransMaterial; ;
                 case TypeHelper.Type.Ground:

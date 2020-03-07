@@ -1,18 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UINodeHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] Dropdown _xAxis;
+    [SerializeField] Dropdown _yAxis;
+    [SerializeField] Dropdown _zAxis;
+    [SerializeField] Dropdown _colors;
+    [SerializeField] DataHandler _dataHandler;
+
+    public void OnXAxisChange()
     {
-        
+        string typeName = _xAxis.options[_xAxis.value].text;
+        _dataHandler.UpdateAxisType(DataHandler.Axis.X, typeName);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnYAxisChange()
     {
-        
+        string typeName = _yAxis.options[_yAxis.value].text;
+        _dataHandler.UpdateAxisType(DataHandler.Axis.Y, typeName);
+    }
+
+    public void OnZAxisChange()
+    {
+        string typeName = _zAxis.options[_zAxis.value].text;
+        _dataHandler.UpdateAxisType(DataHandler.Axis.Z, typeName);
     }
 }

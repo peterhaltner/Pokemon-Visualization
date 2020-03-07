@@ -18,19 +18,58 @@ public class DataHandler : MonoBehaviour
         Speed,
     }
 
+    public enum Axis
+    {
+        X,
+        Y,
+        Z,
+    }
+
     public List<GameObject> PokemonNodes { get { return _pokemonNodes; } }
 
     [SerializeField] AxisController _axisController;
 
     List<GameObject> _pokemonNodes = new List<GameObject>();
 
+    AxisTypes _xAxisType;
+    AxisTypes _yAxisType;
+    AxisTypes _zAxisType;
+
+    void Start()
+    {
+        //Set default axis values - mirrored from default UI settings
+        _xAxisType = AxisTypes.HP;
+        _yAxisType = AxisTypes.Attack;
+        _zAxisType = AxisTypes.Defense;
+
+        SetAxisTypes(_xAxisType, _yAxisType, _zAxisType);
+    }
 
     public void AddPokemonNode(GameObject node)
     {
         _pokemonNodes.Add(node);
     }
 
-    public void SetAxisTypes(AxisTypes xType, AxisTypes yType, AxisTypes zType)
+    public void UpdateAxisType(Axis axis, string friendlyAxisTypeText)
+    {
+        switch(axis)
+        {
+            case Axis.X:
+                _xAxisType = GetAxisTypeFromFriendlyText(friendlyAxisTypeText);
+                break;
+            case Axis.Y:
+                _yAxisType = GetAxisTypeFromFriendlyText(friendlyAxisTypeText);
+                break;
+            case Axis.Z:
+                _zAxisType = GetAxisTypeFromFriendlyText(friendlyAxisTypeText);
+                break;
+        }
+
+        SetAxisTypes(_xAxisType, _yAxisType, _zAxisType);
+    }
+
+    //TODO: Redesign such that it does not take parameters in
+    void SetAxisTypes(AxisTypes xType, AxisTypes yType, AxisTypes zType)
     {
         //Ensure only one is of type None at most
         if((xType == AxisTypes.None && (yType == xType || zType == xType)) ||
@@ -80,6 +119,30 @@ public class DataHandler : MonoBehaviour
             default:
                 Debug.LogError("Enum friendly text not found");
                 return "ERROR";
+        }
+    }
+
+    AxisTypes GetAxisTypeFromFriendlyText(string enumFriendlyText)
+    {
+        switch (enumFriendlyText)
+        {
+            case "Attack":
+                return AxisTypes.Attack;
+            case "Defense":
+                return AxisTypes.Defense;
+            case "HP":
+                return AxisTypes.HP;
+            case "":
+                return AxisTypes.None;
+            case "Special Attack":
+                return AxisTypes.SpecialAttack;
+            case "Special Defense":
+                return AxisTypes.SpecialDefense;
+            case "Speed":
+                return AxisTypes.Speed;
+            default:
+                Debug.LogErrorFormat("Enum friendly text did not match any found '{0}'", enumFriendlyText);
+                return AxisTypes.None;
         }
     }
 

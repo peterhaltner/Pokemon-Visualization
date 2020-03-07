@@ -59,8 +59,5 @@ public class CsvReader : MonoBehaviour
                 pokemonData[(int)PokemonData.Legendary]
             );
         }
-
-        //Set default axis values
-        _dataHandler.SetAxisTypes(DataHandler.AxisTypes.HP, DataHandler.AxisTypes.Attack, DataHandler.AxisTypes.Speed);
     }
 }
