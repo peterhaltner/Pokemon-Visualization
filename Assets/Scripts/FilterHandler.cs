@@ -36,6 +36,9 @@ public class FilterHandler : MonoBehaviour
 
     void Start()
     {
+        List<GenerationFilters> filters = new List<GenerationFilters>();
+        filters.Add(GenerationFilters.Gen1);
+        SetGenerationFilters(filters);
         ApplyFilters();
     }
 
