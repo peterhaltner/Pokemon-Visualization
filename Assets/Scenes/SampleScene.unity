@@ -2119,6 +2119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 143011581}
+  - component: {fileID: 143011582}
   m_Layer: 5
   m_Name: FilterController
   m_TagString: Untagged
@@ -2152,6 +2153,18 @@ RectTransform:
   m_AnchoredPosition: {x: 20, y: -700}
   m_SizeDelta: {x: 300, y: 740}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &143011582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143011580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26840f3c61137bd4b857480845b96876, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &146078128
 GameObject:
   m_ObjectHideFlags: 0
@@ -12253,6 +12266,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 534669904}
+  _uiHoverHandler: {fileID: 1108118693}
+  _uiSelectHandler: {fileID: 1380467943}
 --- !u!114 &938062417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15026,6 +15041,7 @@ GameObject:
   - component: {fileID: 1108118690}
   - component: {fileID: 1108118692}
   - component: {fileID: 1108118691}
+  - component: {fileID: 1108118693}
   m_Layer: 5
   m_Name: HoverPanel
   m_TagString: Untagged
@@ -15089,6 +15105,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108118689}
   m_CullTransparentMesh: 0
+--- !u!114 &1108118693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108118689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f52a3370b54a4245922b2c93ca52c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hoverNameText: {fileID: 1561706428}
+  _hoverPanel: {fileID: 1108118689}
 --- !u!1 &1108830483
 GameObject:
   m_ObjectHideFlags: 0
@@ -17811,6 +17841,7 @@ GameObject:
   - component: {fileID: 1380467940}
   - component: {fileID: 1380467942}
   - component: {fileID: 1380467941}
+  - component: {fileID: 1380467943}
   m_Layer: 5
   m_Name: SelectedPanel
   m_TagString: Untagged
@@ -17893,6 +17924,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380467939}
   m_CullTransparentMesh: 0
+--- !u!114 &1380467943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380467939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcb24a256a61ae145809a904cbd5d7b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pokemonName: {fileID: 311783698}
+  _type1Controller: {fileID: 1475394460}
+  _type2Controller: {fileID: 839733806}
+  _pokemonHP: {fileID: 729556150}
+  _pokemonAttack: {fileID: 1057066708}
+  _pokemonDefense: {fileID: 941659835}
+  _pokemonSpecialAttack: {fileID: 2005678806}
+  _pokemonSpecialDefense: {fileID: 1555109796}
+  _pokemonSpeed: {fileID: 1868358315}
+  _pokemonGeneration: {fileID: 1449298983}
+  _pokemonLegendary: {fileID: 865862678}
+  _selectedPanel: {fileID: 1380467939}
 --- !u!1 &1405440042
 GameObject:
   m_ObjectHideFlags: 0
@@ -21801,8 +21856,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1728762058}
+  - component: {fileID: 1728762059}
   m_Layer: 5
-  m_Name: AxesController
+  m_Name: NodeController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21833,6 +21889,18 @@ RectTransform:
   m_AnchoredPosition: {x: 20, y: -150}
   m_SizeDelta: {x: 300, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1728762059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728762057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ca7269fa0f64674c800a3187da61ff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1739544663
 GameObject:
   m_ObjectHideFlags: 0

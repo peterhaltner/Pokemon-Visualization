@@ -5,9 +5,17 @@ using UnityEngine;
 public class InputHandler : MonoBehaviour
 {
     [SerializeField] Camera _camera;
+    [SerializeField] UIHoverPanelHandler _uiHoverHandler;
+    [SerializeField] UISelectedPanelHandler _uiSelectHandler;
 
     GameObject _selectedPokemon;
     GameObject _hoveredPokemon;
+
+    void Start()
+    {
+        _uiHoverHandler.SetHoverUiActive(false);
+        _uiSelectHandler.SetSelectedUiActive(false);
+    }
 
     void Update()
     {
@@ -46,6 +54,7 @@ public class InputHandler : MonoBehaviour
                 if(previousStateController.ActiveState != NodeStateController.State.Selected)
                 {
                     previousStateController.SetState(NodeStateController.State.Default);
+                    _uiHoverHandler.SetHoverUiActive(false);
                 }
             }
 
@@ -57,6 +66,8 @@ public class InputHandler : MonoBehaviour
                 if(newStateController.ActiveState != NodeStateController.State.Selected)
                 {
                     newStateController.SetState(NodeStateController.State.Hovered);
+                    _uiHoverHandler.UpdateHoverTextUI(newHoveredPokemon);
+                    _uiHoverHandler.SetHoverUiActive(true);
                 }
             }
 
@@ -74,6 +85,7 @@ public class InputHandler : MonoBehaviour
                 if (newStateController.ActiveState != NodeStateController.State.Selected)
                 {
                     newStateController.SetState(NodeStateController.State.Hovered);
+                    _uiHoverHandler.UpdateHoverTextUI(newHoveredPokemon);
                 }
             }
             _hoveredPokemon = newHoveredPokemon;
@@ -86,12 +98,15 @@ public class InputHandler : MonoBehaviour
             {
                 NodeStateController previousStateController = _selectedPokemon.GetComponent<NodeStateController>();
                 previousStateController.SetState(NodeStateController.State.Default);
+                _uiSelectHandler.SetSelectedUiActive(false);
             }
 
             if(newSelectedPokemon != null)
             {
                 NodeStateController newStateController = newSelectedPokemon.GetComponent<NodeStateController>();
                 newStateController.SetState(NodeStateController.State.Selected);
+                _uiSelectHandler.UpdateSelectedTextUI(newSelectedPokemon);
+                _uiSelectHandler.SetSelectedUiActive(true);
             }
 
             _selectedPokemon = newSelectedPokemon;

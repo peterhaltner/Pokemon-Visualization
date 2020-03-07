@@ -23,31 +23,10 @@ public class UiSelectedTypeController : MonoBehaviour
     [SerializeField] GameObject _electricUiElement;
     [SerializeField] GameObject _fairyUiElement;
 
-    //Ensure all are disabled at start
-    void Start()
-    {
-        _normalUiElement.SetActive(false);
-        _poisonUiElement.SetActive(false);
-        _psychicUiElement.SetActive(false);
-        _grassUiElement.SetActive(false);
-        _groundUiElement.SetActive(false);
-        _iceUiElement.SetActive(false);
-        _fireUiElement.SetActive(false);
-        _rockUiElement.SetActive(false);
-        _dragonUiElement.SetActive(false);
-        _waterUiElement.SetActive(false);
-        _bugUiElement.SetActive(false);
-        _darkUiElement.SetActive(false);
-        _fightingUiElement.SetActive(false);
-        _ghostUiElement.SetActive(false);
-        _steelUiElement.SetActive(false);
-        _flyingUiElement.SetActive(false);
-        _electricUiElement.SetActive(false);
-        _fairyUiElement.SetActive(false);
-    }
-
     public void SetType(TypeHelper.Type type)
     {
+        DeactivateAllTypes();
+
         switch (type)
         {
             case TypeHelper.Type.Bug:
@@ -105,5 +84,27 @@ public class UiSelectedTypeController : MonoBehaviour
                 _waterUiElement.SetActive(true);
                 break;
         }
+    }
+
+    void DeactivateAllTypes()
+    {
+        _normalUiElement.SetActive(false);
+        _poisonUiElement.SetActive(false);
+        _psychicUiElement.SetActive(false);
+        _grassUiElement.SetActive(false);
+        _groundUiElement.SetActive(false);
+        _iceUiElement.SetActive(false);
+        _fireUiElement.SetActive(false);
+        _rockUiElement.SetActive(false);
+        _dragonUiElement.SetActive(false);
+        _waterUiElement.SetActive(false);
+        _bugUiElement.SetActive(false);
+        _darkUiElement.SetActive(false);
+        _fightingUiElement.SetActive(false);
+        _ghostUiElement.SetActive(false);
+        _steelUiElement.SetActive(false);
+        _flyingUiElement.SetActive(false);
+        _electricUiElement.SetActive(false);
+        _fairyUiElement.SetActive(false);
     }
 }
