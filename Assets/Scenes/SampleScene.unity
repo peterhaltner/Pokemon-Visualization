@@ -2140,11 +2140,11 @@ RectTransform:
   m_Children:
   - {fileID: 113517434}
   - {fileID: 1539461276}
+  - {fileID: 2014309180}
   - {fileID: 1111650062}
   - {fileID: 2143092531}
   - {fileID: 151425634}
   - {fileID: 1813418918}
-  - {fileID: 2014309180}
   m_Father: {fileID: 1739544664}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2165,6 +2165,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26840f3c61137bd4b857480845b96876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _filterAmountStatus: {fileID: 2014309181}
+  _searchClearButton: {fileID: 1746794561}
+  _searchField: {fileID: 729798501}
+  _dataHandler: {fileID: 938062418}
+  _filterHandler: {fileID: 938062417}
 --- !u!1 &146078128
 GameObject:
   m_ObjectHideFlags: 0
@@ -2315,7 +2320,7 @@ RectTransform:
   - {fileID: 1110673451}
   - {fileID: 273152923}
   m_Father: {fileID: 143011581}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -9689,7 +9694,18 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 143011582}
+        m_MethodName: SearchInputChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   m_CaretColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
@@ -15334,7 +15350,7 @@ RectTransform:
   - {fileID: 729798500}
   - {fileID: 1746794560}
   m_Father: {fileID: 143011581}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -22110,7 +22126,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1746794562}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 143011582}
+        m_MethodName: SearchClearClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &1746794562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23067,7 +23094,7 @@ RectTransform:
   - {fileID: 1362628457}
   - {fileID: 953256418}
   m_Father: {fileID: 143011581}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -25726,7 +25753,7 @@ GameObject:
   - component: {fileID: 2014309182}
   - component: {fileID: 2014309181}
   m_Layer: 5
-  m_Name: Text
+  m_Name: FilterAmount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25744,7 +25771,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 143011581}
-  m_RootOrder: 6
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -27447,7 +27474,7 @@ RectTransform:
   - {fileID: 1510068283}
   - {fileID: 664990429}
   m_Father: {fileID: 143011581}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
