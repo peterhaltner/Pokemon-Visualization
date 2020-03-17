@@ -90,11 +90,11 @@ public class DataHandler : MonoBehaviour
         {
             var nodeInfo = node.GetComponent<NodeInformationController>();
 
-            //Move to position 
+            //Move to position with slight fuzziness to stop complete overlap
             node.transform.position = new Vector3(
-                GetValueFromAxisType(nodeInfo, xType),
-                GetValueFromAxisType(nodeInfo, yType),
-                GetValueFromAxisType(nodeInfo, zType)
+                GetValueFromAxisType(nodeInfo, xType) + UnityEngine.Random.Range(-0.3f, 0.3f),
+                GetValueFromAxisType(nodeInfo, yType) + UnityEngine.Random.Range(-0.3f, 0.3f),
+                GetValueFromAxisType(nodeInfo, zType) + UnityEngine.Random.Range(-0.3f, 0.3f)
             );
         }
     }
