@@ -21,6 +21,14 @@ public class UIFilterHandler : MonoBehaviour
     [SerializeField] DataHandler _dataHandler;
     [SerializeField] FilterHandler _filterHandler;
 
+    //Generation UI Elements
+    [SerializeField] List<Toggle> _generationToggles;
+    [SerializeField] Button _generationClearButton;
+
+    //Legendary UI Element
+    [SerializeField] Dropdown _legendaryDropdown;
+    [SerializeField] Button _legendaryClearButton;
+
     Dictionary<string, Toggle> _toggleNamePairs = new Dictionary<string, Toggle>();
 
     void Start()
@@ -67,7 +75,6 @@ public class UIFilterHandler : MonoBehaviour
             if(!toggle.isOn)
             {
                 toggle.isOn = true;
-                FilterPokemonToggled(toggle.transform.parent.name);
             }
         }
 
@@ -86,7 +93,6 @@ public class UIFilterHandler : MonoBehaviour
             if (toggle.isOn)
             {
                 toggle.isOn = false;
-                FilterPokemonToggled(toggle.transform.parent.name);
             }
         }
 
@@ -141,6 +147,69 @@ public class UIFilterHandler : MonoBehaviour
         UpdateFilterAmountStatus();
     }
     
+    public void GenerationToggled(int generationValue)
+    {
+        Toggle toggle = _generationToggles[generationValue - 1]; //Account for offset of 1
+
+        var generation = GenerationHelper.ParseGeneration(generationValue);
+
+        if(toggle.isOn)
+        {
+            _filterHandler.AddGenerationFilter(generation);
+        }
+        else
+        {
+            _filterHandler.RemoveGenerationFilter(generation);
+        }
+
+        UpdateGenerationClearButtonVisibility();
+        UpdateFilterAmountStatus();
+    }
+
+    public void GenerationClearClicked()
+    {
+        foreach (Toggle toggle in _generationToggles)
+        {
+            if (!toggle.isOn)
+            {
+                toggle.isOn = true;
+            }
+        }
+
+        _generationClearButton.gameObject.SetActive(false);
+    }
+
+    public void LegendaryDropdownChanged()
+    {
+        //option 0 is any
+        if(_legendaryDropdown.value == 0)
+        {
+            _filterHandler.SetMustBeLegendaryFilter(null);
+        }
+        //option 1 is only legendary
+        else if(_legendaryDropdown.value == 1)
+        {
+            _filterHandler.SetMustBeLegendaryFilter(true);
+        }
+        //option 2 is non-legendary only
+        else if (_legendaryDropdown.value == 2)
+        {
+            _filterHandler.SetMustBeLegendaryFilter(false);
+        }
+        else
+        {
+            Debug.LogErrorFormat("Dropdown option '{0}' is not valid", _legendaryDropdown.value);
+        }
+
+        _legendaryClearButton.gameObject.SetActive(_legendaryDropdown.value != 0);
+        UpdateFilterAmountStatus();
+    }
+
+    public void LegendaryClearClicked()
+    {
+        _legendaryDropdown.value = 0;
+    }
+
     //To get called after filter changes
     void UpdateFilterAmountStatus()
     {
@@ -171,6 +240,22 @@ public class UIFilterHandler : MonoBehaviour
         }
 
         _typeClearButton.gameObject.SetActive(!isDefaultValues);
+    }
+
+    void UpdateGenerationClearButtonVisibility()
+    {
+        bool isDefaultValues = true;
+
+        foreach(Toggle toggle in _generationToggles)
+        {
+            if(!toggle.isOn)
+            {
+                isDefaultValues = false;
+                break;
+            }
+        }
+
+        _generationClearButton.gameObject.SetActive(!isDefaultValues);
     }
 
     void UpdateTypeSelectAllButtonVisibility()

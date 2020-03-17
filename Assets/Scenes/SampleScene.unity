@@ -2204,6 +2204,16 @@ MonoBehaviour:
   _typeClearButton: {fileID: 571396275}
   _dataHandler: {fileID: 938062418}
   _filterHandler: {fileID: 938062417}
+  _generationToggles:
+  - {fileID: 714258932}
+  - {fileID: 440808621}
+  - {fileID: 554089811}
+  - {fileID: 1520512867}
+  - {fileID: 823161717}
+  - {fileID: 826095983}
+  _generationClearButton: {fileID: 1110673452}
+  _legendaryDropdown: {fileID: 1362628458}
+  _legendaryClearButton: {fileID: 953256419}
 --- !u!1 &146078128
 GameObject:
   m_ObjectHideFlags: 0
@@ -3235,7 +3245,7 @@ GameObject:
   m_Component:
   - component: {fileID: 212378299}
   m_Layer: 5
-  m_Name: Gen4
+  m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5898,7 +5908,18 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 143011582}
+        m_MethodName: GenerationToggled
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   m_IsOn: 1
 --- !u!1 &443760579
 GameObject:
@@ -6426,7 +6447,7 @@ GameObject:
   m_Component:
   - component: {fileID: 493492686}
   m_Layer: 5
-  m_Name: Gen1
+  m_Name: 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7334,7 +7355,18 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 143011582}
+        m_MethodName: GenerationToggled
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   m_IsOn: 1
 --- !u!1 &555772922
 GameObject:
@@ -9531,7 +9563,18 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 143011582}
+        m_MethodName: GenerationToggled
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   m_IsOn: 1
 --- !u!1 &724462874
 GameObject:
@@ -11331,7 +11374,18 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 143011582}
+        m_MethodName: GenerationToggled
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   m_IsOn: 1
 --- !u!1 &826095981
 GameObject:
@@ -11413,7 +11467,18 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 143011582}
+        m_MethodName: GenerationToggled
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   m_IsOn: 1
 --- !u!1 &833014974
 GameObject:
@@ -12588,7 +12653,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &953256418
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12648,7 +12713,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 953256420}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 143011582}
+        m_MethodName: LegendaryClearClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &953256420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14830,7 +14906,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1092087129}
   m_Layer: 5
-  m_Name: Gen3
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15400,7 +15476,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1110673451
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15460,7 +15536,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1110673453}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 143011582}
+        m_MethodName: GenerationClearClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &1110673453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17891,7 +17978,18 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 143011582}
+        m_MethodName: LegendaryDropdownChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &1362628459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19918,7 +20016,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1514674994}
   m_Layer: 5
-  m_Name: Gen5
+  m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20060,7 +20158,18 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 143011582}
+        m_MethodName: GenerationToggled
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
   m_IsOn: 1
 --- !u!1 &1524674515
 GameObject:
@@ -20983,7 +21092,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1600632376}
   m_Layer: 5
-  m_Name: Gen2
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26074,7 +26183,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Displaying xxx/xxx Pok\xE9mon"
+  m_Text: "Displaying 0/0 Pok\xE9mon"
 --- !u!222 &2014309182
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27260,7 +27369,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2116709073}
   m_Layer: 5
-  m_Name: Gen6
+  m_Name: 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

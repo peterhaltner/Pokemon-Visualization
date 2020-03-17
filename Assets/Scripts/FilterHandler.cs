@@ -14,21 +14,9 @@ public class FilterHandler : MonoBehaviour
         MustMatchAll,
     }
 
-    public enum GenerationFilters
-    {
-        Default,
-        Gen1,
-        Gen2,
-        Gen3,
-        Gen4,
-        Gen5,
-        Gen6,
-    }
-
     public int NumberPokemonFilterMatched { get; private set; }
 
-    List<GenerationFilters> _activeGenerationFilters = new List<GenerationFilters>();
-
+    List<GenerationHelper.Generations> _activeGenerationFilters = new List<GenerationHelper.Generations>();
     List<TypeHelper.Type> _activeTypeFilters = new List<TypeHelper.Type>();
     FilterType _typeFilterType;
 
@@ -39,6 +27,7 @@ public class FilterHandler : MonoBehaviour
     void Start()
     {
         AddAllTypeFilters();
+        AddAllGenerationFilters();
     }
 
     public void SetNameFilter(string nameFilter)
@@ -50,32 +39,6 @@ public class FilterHandler : MonoBehaviour
     public void ClearTypeFilters()
     {
         _activeTypeFilters.Clear();
-        ApplyFilters();
-    }
-
-    public void AddAllTypeFilters()
-    {
-        _activeTypeFilters.Clear();
-
-        _activeTypeFilters.Add(TypeHelper.Type.Bug);
-        _activeTypeFilters.Add(TypeHelper.Type.Dark);
-        _activeTypeFilters.Add(TypeHelper.Type.Dragon);
-        _activeTypeFilters.Add(TypeHelper.Type.Electric);
-        _activeTypeFilters.Add(TypeHelper.Type.Fairy);
-        _activeTypeFilters.Add(TypeHelper.Type.Fighting);
-        _activeTypeFilters.Add(TypeHelper.Type.Fire);
-        _activeTypeFilters.Add(TypeHelper.Type.Flying);
-        _activeTypeFilters.Add(TypeHelper.Type.Ghost);
-        _activeTypeFilters.Add(TypeHelper.Type.Grass);
-        _activeTypeFilters.Add(TypeHelper.Type.Ground);
-        _activeTypeFilters.Add(TypeHelper.Type.Ice);
-        _activeTypeFilters.Add(TypeHelper.Type.Normal);
-        _activeTypeFilters.Add(TypeHelper.Type.Poison);
-        _activeTypeFilters.Add(TypeHelper.Type.Psychic);
-        _activeTypeFilters.Add(TypeHelper.Type.Rock);
-        _activeTypeFilters.Add(TypeHelper.Type.Steel);
-        _activeTypeFilters.Add(TypeHelper.Type.Water);
-
         ApplyFilters();
     }
 
@@ -97,9 +60,15 @@ public class FilterHandler : MonoBehaviour
         ApplyFilters();
     }
 
-    public void SetGenerationFilters(List<GenerationFilters> generationFilters)
+    public void AddGenerationFilter(GenerationHelper.Generations generation)
     {
-        _activeGenerationFilters = generationFilters;
+        _activeGenerationFilters.Add(generation);
+        ApplyFilters();
+    }
+
+    public void RemoveGenerationFilter(GenerationHelper.Generations generation)
+    {
+        _activeGenerationFilters.Remove(generation);
         ApplyFilters();
     }
 
@@ -161,32 +130,9 @@ public class FilterHandler : MonoBehaviour
             }
 
             //Generation filter - if none match then filter it out
-            if(!isFilteredOut && _activeGenerationFilters.Count != 0)
+            if(!isFilteredOut && _activeGenerationFilters.Count != GenerationHelper.NumberOfGenerations)
             {
-                GenerationFilters nodeGeneration = GenerationFilters.Default;
-
-                switch(nodeInfo.Generation)
-                {
-                    case 1:
-                        nodeGeneration = GenerationFilters.Gen1;
-                        break;
-                    case 2:
-                        nodeGeneration = GenerationFilters.Gen2;
-                        break;
-                    case 3:
-                        nodeGeneration = GenerationFilters.Gen3;
-                        break;
-                    case 4:
-                        nodeGeneration = GenerationFilters.Gen4;
-                        break;
-                    case 5:
-                        nodeGeneration = GenerationFilters.Gen5;
-                        break;
-                    case 6:
-                        nodeGeneration = GenerationFilters.Gen6;
-                        break;
-                }
-
+                var nodeGeneration = GenerationHelper.ParseGeneration(nodeInfo.Generation);
                 isFilteredOut = !_activeGenerationFilters.Contains(nodeGeneration);
             }
 
@@ -217,5 +163,45 @@ public class FilterHandler : MonoBehaviour
         }
 
         NumberPokemonFilterMatched = numFilterMatched;
+    }
+
+    void AddAllTypeFilters()
+    {
+        _activeTypeFilters.Clear();
+
+        _activeTypeFilters.Add(TypeHelper.Type.Bug);
+        _activeTypeFilters.Add(TypeHelper.Type.Dark);
+        _activeTypeFilters.Add(TypeHelper.Type.Dragon);
+        _activeTypeFilters.Add(TypeHelper.Type.Electric);
+        _activeTypeFilters.Add(TypeHelper.Type.Fairy);
+        _activeTypeFilters.Add(TypeHelper.Type.Fighting);
+        _activeTypeFilters.Add(TypeHelper.Type.Fire);
+        _activeTypeFilters.Add(TypeHelper.Type.Flying);
+        _activeTypeFilters.Add(TypeHelper.Type.Ghost);
+        _activeTypeFilters.Add(TypeHelper.Type.Grass);
+        _activeTypeFilters.Add(TypeHelper.Type.Ground);
+        _activeTypeFilters.Add(TypeHelper.Type.Ice);
+        _activeTypeFilters.Add(TypeHelper.Type.Normal);
+        _activeTypeFilters.Add(TypeHelper.Type.Poison);
+        _activeTypeFilters.Add(TypeHelper.Type.Psychic);
+        _activeTypeFilters.Add(TypeHelper.Type.Rock);
+        _activeTypeFilters.Add(TypeHelper.Type.Steel);
+        _activeTypeFilters.Add(TypeHelper.Type.Water);
+
+        ApplyFilters();
+    }
+
+    void AddAllGenerationFilters()
+    {
+        _activeGenerationFilters.Clear();
+
+        _activeGenerationFilters.Add(GenerationHelper.Generations.Gen1);
+        _activeGenerationFilters.Add(GenerationHelper.Generations.Gen2);
+        _activeGenerationFilters.Add(GenerationHelper.Generations.Gen3);
+        _activeGenerationFilters.Add(GenerationHelper.Generations.Gen4);
+        _activeGenerationFilters.Add(GenerationHelper.Generations.Gen5);
+        _activeGenerationFilters.Add(GenerationHelper.Generations.Gen6);
+
+        ApplyFilters();
     }
 }
