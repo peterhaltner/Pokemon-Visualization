@@ -27,6 +27,9 @@ public class TypeHelper : MonoBehaviour
         Water
     }
 
+    //Update if more types added
+    public static int NumberOfTypes { get { return 18; } }
+
     public static Type ParseType(string type)
     {
         switch (type)

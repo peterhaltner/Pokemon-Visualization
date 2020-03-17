@@ -38,10 +38,7 @@ public class FilterHandler : MonoBehaviour
 
     void Start()
     {
-        //List<GenerationFilters> filters = new List<GenerationFilters>();
-        //filters.Add(GenerationFilters.Gen1);
-        //SetGenerationFilters(filters);
-        ApplyFilters();
+        AddAllTypeFilters();
     }
 
     public void SetNameFilter(string nameFilter)
@@ -50,9 +47,52 @@ public class FilterHandler : MonoBehaviour
         ApplyFilters();
     }
 
-    public void SetTypeFilters(List<TypeHelper.Type> typeFilters, FilterType filterType)
+    public void ClearTypeFilters()
     {
-        _activeTypeFilters = typeFilters;
+        _activeTypeFilters.Clear();
+        ApplyFilters();
+    }
+
+    public void AddAllTypeFilters()
+    {
+        _activeTypeFilters.Clear();
+
+        _activeTypeFilters.Add(TypeHelper.Type.Bug);
+        _activeTypeFilters.Add(TypeHelper.Type.Dark);
+        _activeTypeFilters.Add(TypeHelper.Type.Dragon);
+        _activeTypeFilters.Add(TypeHelper.Type.Electric);
+        _activeTypeFilters.Add(TypeHelper.Type.Fairy);
+        _activeTypeFilters.Add(TypeHelper.Type.Fighting);
+        _activeTypeFilters.Add(TypeHelper.Type.Fire);
+        _activeTypeFilters.Add(TypeHelper.Type.Flying);
+        _activeTypeFilters.Add(TypeHelper.Type.Ghost);
+        _activeTypeFilters.Add(TypeHelper.Type.Grass);
+        _activeTypeFilters.Add(TypeHelper.Type.Ground);
+        _activeTypeFilters.Add(TypeHelper.Type.Ice);
+        _activeTypeFilters.Add(TypeHelper.Type.Normal);
+        _activeTypeFilters.Add(TypeHelper.Type.Poison);
+        _activeTypeFilters.Add(TypeHelper.Type.Psychic);
+        _activeTypeFilters.Add(TypeHelper.Type.Rock);
+        _activeTypeFilters.Add(TypeHelper.Type.Steel);
+        _activeTypeFilters.Add(TypeHelper.Type.Water);
+
+        ApplyFilters();
+    }
+
+    public void AddTypeFilter(TypeHelper.Type type)
+    {
+        _activeTypeFilters.Add(type);
+        ApplyFilters();
+    }
+
+    public void RemoveTypeFilter(TypeHelper.Type type)
+    {
+        _activeTypeFilters.Remove(type);
+        ApplyFilters();
+    }
+
+    public void SetTypeFilters(FilterType filterType)
+    {
         _typeFilterType = filterType;
         ApplyFilters();
     }
@@ -85,9 +125,9 @@ public class FilterHandler : MonoBehaviour
             }
 
             //Type filter
-            if(!isFilteredOut && _activeTypeFilters.Count != 0)
+            if(!isFilteredOut)
             {
-                if(_typeFilterType == FilterType.CanMatchAny)
+                if(_typeFilterType == FilterType.CanMatchAny && _activeTypeFilters.Count != TypeHelper.NumberOfTypes)
                 {
                     bool hasMatchedAny = false;
 
@@ -104,6 +144,11 @@ public class FilterHandler : MonoBehaviour
                 }
                 else if(_typeFilterType == FilterType.MustMatchAll)
                 {
+                    if(_activeTypeFilters.Count == 0)
+                    {
+                        isFilteredOut = true;
+                    }
+
                     foreach (var type in _activeTypeFilters)
                     {
                         if (nodeInfo.Type1 != type && nodeInfo.Type2 != type)
