@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 //camera math inspired by https://answers.unity.com/questions/666905/in-game-camera-movement-like-editor.html
@@ -19,25 +20,35 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] InputField _pokemonSearchField;
 
+    void Start()
+    {
+        pitch = transform.localEulerAngles.x;
+        yaw = transform.localEulerAngles.y;
+    }
+
     void Update()
     {
-        //Look around with Right Mouse
-        if (Input.GetMouseButton(1))
+        //Only let camera have controls if mouse is not over UI
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
-            yaw += lookSpeedH * Input.GetAxis("Mouse X");
-            pitch -= lookSpeedV * Input.GetAxis("Mouse Y");
+            //Look around with Right Mouse
+            if (Input.GetMouseButton(1))
+            {
+                yaw += lookSpeedH * Input.GetAxis("Mouse X");
+                pitch -= lookSpeedV * Input.GetAxis("Mouse Y");
 
-            transform.eulerAngles = new Vector3(pitch, yaw, 0f);
+                transform.eulerAngles = new Vector3(pitch, yaw, 0f);
+            }
+
+            //drag camera around with Middle Mouse
+            if (Input.GetMouseButton(2))
+            {
+                transform.Translate(-Input.GetAxisRaw("Mouse X") * Time.deltaTime * dragSpeed, -Input.GetAxisRaw("Mouse Y") * Time.deltaTime * dragSpeed, 0);
+            }
+
+            //Zoom in and out with Mouse Wheel
+            transform.Translate(0, 0, Input.GetAxis("Mouse ScrollWheel") * zoomSpeed, Space.Self);
         }
-
-        //drag camera around with Middle Mouse
-        if (Input.GetMouseButton(2))
-        {
-            transform.Translate(-Input.GetAxisRaw("Mouse X") * Time.deltaTime * dragSpeed, -Input.GetAxisRaw("Mouse Y") * Time.deltaTime * dragSpeed, 0);
-        }
-
-        //Zoom in and out with Mouse Wheel
-        transform.Translate(0, 0, Input.GetAxis("Mouse ScrollWheel") * zoomSpeed, Space.Self);
 
         //If typing in input field, do not move
         if(_pokemonSearchField.isFocused)

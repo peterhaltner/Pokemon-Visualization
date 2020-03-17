@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class InputHandler : MonoBehaviour
 {
@@ -26,8 +27,14 @@ public class InputHandler : MonoBehaviour
         GameObject newHoveredPokemon = null;
         GameObject newSelectedPokemon = null;
 
-        if (Physics.Raycast(ray, out hit))
+        //Exit if pointer is over UI
+        if (EventSystem.current.IsPointerOverGameObject())
         {
+            return;
+        }
+
+        if (Physics.Raycast(ray, out hit))
+        {     
             Transform objectHit = hit.transform;
             if(objectHit.tag == "Pokemon")
             {
