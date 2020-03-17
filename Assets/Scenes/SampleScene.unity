@@ -7110,6 +7110,7 @@ MonoBehaviour:
   dragSpeed: 80
   moveSpeed: 50
   shiftMultipler: 6
+  _pokemonSearchField: {fileID: 729798501}
 --- !u!1 &541600830
 GameObject:
   m_ObjectHideFlags: 0

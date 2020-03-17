@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //camera math inspired by https://answers.unity.com/questions/666905/in-game-camera-movement-like-editor.html
 
@@ -15,6 +16,8 @@ public class CameraController : MonoBehaviour
 
     private float yaw = 0f;
     private float pitch = 0f;
+
+    [SerializeField] InputField _pokemonSearchField;
 
     void Update()
     {
@@ -35,6 +38,12 @@ public class CameraController : MonoBehaviour
 
         //Zoom in and out with Mouse Wheel
         transform.Translate(0, 0, Input.GetAxis("Mouse ScrollWheel") * zoomSpeed, Space.Self);
+
+        //If typing in input field, do not move
+        if(_pokemonSearchField.isFocused)
+        {
+            return;
+        }
 
         //If left shift is held, ensure multiplier is active
         if(Input.GetKeyDown(KeyCode.LeftShift))
