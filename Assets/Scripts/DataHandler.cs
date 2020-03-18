@@ -25,6 +25,8 @@ public class DataHandler : MonoBehaviour
         Z,
     }
 
+    const float TranslationAnimationTime = 0.5f;
+
     public List<GameObject> PokemonNodes { get { return _pokemonNodes; } }
     public int NumberOfPokemon { get { return _pokemonNodes.Count; } }
 
@@ -91,12 +93,30 @@ public class DataHandler : MonoBehaviour
             var nodeInfo = node.GetComponent<NodeInformationController>();
 
             //Move to position with slight fuzziness to stop complete overlap
-            node.transform.position = new Vector3(
+            Vector3 newNodePositon = new Vector3(
                 GetValueFromAxisType(nodeInfo, xType) + UnityEngine.Random.Range(-0.3f, 0.3f),
                 GetValueFromAxisType(nodeInfo, yType) + UnityEngine.Random.Range(-0.3f, 0.3f),
                 GetValueFromAxisType(nodeInfo, zType) + UnityEngine.Random.Range(-0.3f, 0.3f)
             );
+
+            StartCoroutine(StartNodeTranslation(node.transform, newNodePositon));
         }
+    }
+
+    public IEnumerator StartNodeTranslation(Transform node, Vector3 endPos)
+    {
+        float step = 0;
+        Vector3 startPos = node.transform.position;
+
+        while (step < TranslationAnimationTime)
+        {
+            node.position = Vector3.Lerp(startPos, endPos, step / TranslationAnimationTime);
+
+            step += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        node.position = endPos;
     }
 
     string GetEnumFriendlyText(AxisTypes axisType)
