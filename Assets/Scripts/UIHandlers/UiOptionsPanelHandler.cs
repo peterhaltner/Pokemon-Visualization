@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UiControlPanelHandler : MonoBehaviour
+public class UiOptionsPanelHandler : MonoBehaviour
 {
     [SerializeField] Button _collapseButton;
 
-    Vector2 _collapsedPositon = new Vector2(200f, 0);
-    Vector2 _expandedPositon = new Vector2(-200f, 0);
+    Vector2 _collapsedPositon = new Vector2(200f, -200f);
+    Vector2 _expandedPositon = new Vector2(200f, 200f);
     const float AnimationTime = 0.2f;
 
     bool _isExpanded = true;
@@ -16,17 +16,16 @@ public class UiControlPanelHandler : MonoBehaviour
     RectTransform _collapsePanel;
     Text _collapseButtonArrowText;
 
-
     void Start()
     {
         _collapsePanel = GetComponent<RectTransform>();
         _collapseButtonArrowText = _collapseButton.GetComponentInChildren<Text>();
     }
 
-    public void CollapseControlPanelClicked()
+    public void CollapseOptionsPanelClicked()
     {
         _timeRemaining = AnimationTime;
-        if(_isExpanded)
+        if (_isExpanded)
         {
             StartCoroutine(StartCollapseAnimation());
             _isExpanded = false;
@@ -42,7 +41,7 @@ public class UiControlPanelHandler : MonoBehaviour
 
     public IEnumerator StartCollapseAnimation()
     {
-        while(_timeRemaining > 0)
+        while (_timeRemaining > 0)
         {
             _collapsePanel.anchoredPosition = Vector2.Lerp(
                 _expandedPositon, _collapsedPositon, 1 - _timeRemaining / AnimationTime
@@ -54,7 +53,7 @@ public class UiControlPanelHandler : MonoBehaviour
 
         _collapsePanel.anchoredPosition = _collapsedPositon;
         _collapseButton.interactable = true;
-        _collapseButtonArrowText.text = "<";
+        _collapseButtonArrowText.text = "ʌ";
     }
 
     public IEnumerator StartExpandAnimation()
@@ -71,6 +70,6 @@ public class UiControlPanelHandler : MonoBehaviour
 
         _collapsePanel.anchoredPosition = _expandedPositon;
         _collapseButton.interactable = true;
-        _collapseButtonArrowText.text = ">";
+        _collapseButtonArrowText.text = "v";
     }
 }
