@@ -13659,7 +13659,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b65365676cf285f4fae9bcc131c118d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 534669904}
   _uiHoverHandler: {fileID: 1108118693}
   _uiSelectHandler: {fileID: 1380467943}
 --- !u!114 &938062417

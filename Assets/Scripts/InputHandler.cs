@@ -60,8 +60,8 @@ public class InputHandler : MonoBehaviour
                 if(previousStateController.ActiveState != NodeStateController.State.Selected)
                 {
                     previousStateController.SetState(NodeStateController.State.Default);
-                    _uiHoverHandler.SetHoverUiActive(false);
                 }
+                _uiHoverHandler.SetHoverUiActive(false);
             }
 
             //Case 2: it was hovering over nothing, now hovering over Pokemon
@@ -73,8 +73,8 @@ public class InputHandler : MonoBehaviour
                 {
                     newStateController.SetState(NodeStateController.State.Hovered);
                     _uiHoverHandler.UpdateHoverTextUI(newHoveredPokemon);
-                    _uiHoverHandler.SetHoverUiActive(true);
                 }
+                _uiHoverHandler.SetHoverUiActive(true);
             }
 
             //Case 3: It was hovering over one pokemon, and directly started hovering over another Pokemon
