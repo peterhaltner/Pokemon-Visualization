@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 
 public class InputHandler : MonoBehaviour
 {
-    [SerializeField] Camera _camera;
     [SerializeField] UIHoverPanelHandler _uiHoverHandler;
     [SerializeField] UISelectedPanelHandler _uiSelectHandler;
 
@@ -22,7 +21,7 @@ public class InputHandler : MonoBehaviour
     {
         //Check if mouse is hovering over a Pokemon node
         RaycastHit hit;
-        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = CameraStateController.ActiveCamera.ScreenPointToRay(Input.mousePosition);
 
         GameObject newHoveredPokemon = null;
         GameObject newSelectedPokemon = null;

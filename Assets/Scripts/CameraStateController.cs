@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraStateController : MonoBehaviour
 {
+    public static Camera ActiveCamera { get; private set; }
+
     [SerializeField] GameObject _perspectiveCamera;
     [SerializeField] GameObject _xyCamera;
     [SerializeField] GameObject _zyCamera;
@@ -22,7 +24,7 @@ public class CameraStateController : MonoBehaviour
         ZXAxis,
     }
 
-    CameraTypes _activeCameraType = CameraTypes.FreeFlight;
+    CameraTypes _activeCameraType;
 
     void Start()
     {
@@ -33,6 +35,8 @@ public class CameraStateController : MonoBehaviour
 
         _initialPerspectivePosition = _perspectiveCamera.transform.position;
         _initialPerspectiveRotation = _perspectiveCamera.transform.rotation;
+
+        SetCameraType(CameraTypes.FreeFlight);
     }
 
     public void ResetPerspectiveCamera()
@@ -54,6 +58,7 @@ public class CameraStateController : MonoBehaviour
         }
 
         _activeCameraType = newCameraType;
+        ActiveCamera = _cameraTypePairs[_activeCameraType].GetComponent<Camera>();
 
         //Keep perspective camera in same location as active camera
         if(_activeCameraType != CameraTypes.FreeFlight)
