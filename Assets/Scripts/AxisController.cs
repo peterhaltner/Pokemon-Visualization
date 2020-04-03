@@ -7,6 +7,7 @@ public class AxisController : MonoBehaviour
     [SerializeField] TextMesh x_axisText;
     [SerializeField] TextMesh y_axisText;
     [SerializeField] TextMesh z_axisText;
+    [SerializeField] Transform z_axisLabels;
 
     public enum Axises
     {
@@ -26,10 +27,24 @@ public class AxisController : MonoBehaviour
         if(isFlipped)
         {
             z_axisText.transform.localEulerAngles = new Vector3(45f, 270f, 0);
+
+            foreach( Transform trans in z_axisLabels.GetComponentsInChildren<Transform>() )
+            {
+                if (trans == z_axisLabels.transform) { continue; } //Skip the parent, only do children
+
+                trans.localEulerAngles = new Vector3(45f, 270f, 0);
+            }
         }
         else
         {
             z_axisText.transform.localEulerAngles = new Vector3(45f, 90f, 0);
+
+            foreach (Transform trans in z_axisLabels.GetComponentsInChildren<Transform>())
+            {
+                if(trans == z_axisLabels.transform) { continue; } //Skip the parent, only do children
+
+                trans.localEulerAngles = new Vector3(45f, 90f, 0);
+            }
         }
     }
 
