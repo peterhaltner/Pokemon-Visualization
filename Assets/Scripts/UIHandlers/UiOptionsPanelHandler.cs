@@ -39,6 +39,11 @@ public class UiOptionsPanelHandler : MonoBehaviour
         _collapseButton.interactable = false;
     }
 
+    public void ExitApplicationButtonPressed()
+    {
+        Application.Quit();
+    }
+
     public IEnumerator StartCollapseAnimation()
     {
         while (_timeRemaining > 0)
