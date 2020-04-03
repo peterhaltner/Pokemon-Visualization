@@ -11,6 +11,7 @@ public class CameraStateController : MonoBehaviour
     [SerializeField] GameObject _zyCamera;
     [SerializeField] GameObject _zxCamera;
     [SerializeField] CameraController _freeFlyCameraController;
+    [SerializeField] AxisController _axisController;
 
     Dictionary<CameraTypes, GameObject> _cameraTypePairs = new Dictionary<CameraTypes, GameObject>();
     Vector3 _initialPerspectivePosition;
@@ -59,6 +60,8 @@ public class CameraStateController : MonoBehaviour
 
         _activeCameraType = newCameraType;
         ActiveCamera = _cameraTypePairs[_activeCameraType].GetComponent<Camera>();
+
+        _axisController.SetZLabelFlipped(_activeCameraType == CameraTypes.ZYAxis);
 
         //Keep perspective camera in same location as active camera
         if(_activeCameraType != CameraTypes.FreeFlight)

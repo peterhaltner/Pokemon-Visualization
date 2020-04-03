@@ -21,6 +21,18 @@ public class AxisController : MonoBehaviour
         textMesh.text = "\n\n" + text;      //Two new lines for spacing purposes
     }
 
+    public void SetZLabelFlipped(bool isFlipped)
+    {
+        if(isFlipped)
+        {
+            z_axisText.transform.localEulerAngles = new Vector3(45f, 270f, 0);
+        }
+        else
+        {
+            z_axisText.transform.localEulerAngles = new Vector3(45f, 90f, 0);
+        }
+    }
+
     TextMesh GetTextMesh(Axises axis)
     {
         switch(axis)
