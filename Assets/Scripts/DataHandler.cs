@@ -104,6 +104,17 @@ public class DataHandler : MonoBehaviour
         }
     }
 
+    public void SetNodeScales(float scale)
+    {
+        foreach(var node in _pokemonNodes)
+        {
+            node.transform.localScale = new Vector3(2f * scale, 2f * scale, 2f * scale);
+            var nodeAppearance = node.GetComponent<NodeAppearance>();
+            nodeAppearance.SelectedLight.range = (4.5f * scale);
+            nodeAppearance.HaloLight.range = (2.7f * scale);
+        }
+    }
+
     public IEnumerator StartNodeTranslation(Transform node, Vector3 endPos)
     {
         float step = 0;

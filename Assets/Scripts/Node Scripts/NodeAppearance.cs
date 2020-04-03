@@ -6,6 +6,9 @@ public class NodeAppearance : MonoBehaviour
 {
     [SerializeField] NodeInformationController _nodeInformationController;
 
+    public Light HaloLight { get { return _halo; } }
+    public Light SelectedLight { get { return _light; } }
+
     //Regular Type Materials
     Material _type1Material;
     Material _type2Material;
@@ -21,7 +24,7 @@ public class NodeAppearance : MonoBehaviour
     Renderer _type1Renderer;
     Renderer _type2Renderer;
 
-    Behaviour _halo;
+    Light _halo;
     Light _light;
     SphereCollider _collider;
 
@@ -56,7 +59,7 @@ public class NodeAppearance : MonoBehaviour
         _type2Renderer = transform.GetChild(1).GetComponent<Renderer>();
 
         //Get the halo renderer
-        _halo = (Behaviour)GetComponent("Halo");
+        _halo = transform.Find("LegendaryHalo").GetComponent<Light>();
 
         //Enable if legendary
         _halo.enabled = _nodeInformationController.IsLegendary;
