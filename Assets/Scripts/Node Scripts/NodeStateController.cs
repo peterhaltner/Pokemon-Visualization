@@ -19,6 +19,7 @@ public class NodeStateController : MonoBehaviour
     [SerializeField] NodeAppearance _appearance; 
 
     bool _isActive;
+    bool _isVisibleWhenFiltered = true;
     State _activeState = State.Default;
     MaterialHelper.MaterialType _activeMaterialType;
 
@@ -58,15 +59,19 @@ public class NodeStateController : MonoBehaviour
     public void SetActive(bool isActive)
     {
         _isActive = isActive;
-
-        _appearance.SetTransparent(!isActive);
-        ApplyMaterialChange();
+        UpdateFilteredAppearance();
     }
 
     public void SetMaterialType(MaterialHelper.MaterialType newType)
     {
         _activeMaterialType = newType;
         ApplyMaterialChange();
+    }
+
+    public void SetHideFilteredNodes(bool visible)
+    {
+        _isVisibleWhenFiltered = visible;
+        UpdateFilteredAppearance();
     }
 
     void SetDefault()
@@ -84,6 +89,14 @@ public class NodeStateController : MonoBehaviour
     {
         _appearance.SetLightActive(true);
         _appearance.SetLightColor(SelectedColor);
+    }
+
+    void UpdateFilteredAppearance()
+    {
+        _appearance.SetTransparent(!_isActive);
+        _appearance.SetRenderersActive(_isActive || _isVisibleWhenFiltered);
+
+        ApplyMaterialChange();
     }
 
     void ApplyMaterialChange()

@@ -115,6 +115,15 @@ public class DataHandler : MonoBehaviour
         }
     }
 
+    public void SetNodesFilteredHidden(bool visible)
+    {
+        foreach (var node in _pokemonNodes)
+        {
+            var nodeInfo = node.GetComponent<NodeStateController>();
+            nodeInfo.SetHideFilteredNodes(visible);
+        }
+    }
+
     public IEnumerator StartNodeTranslation(Transform node, Vector3 endPos)
     {
         float step = 0;

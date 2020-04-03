@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class UiOptionsPanelHandler : MonoBehaviour
 {
     [SerializeField] Button _collapseButton;
+    [SerializeField] Toggle _filterTransparentNodesToggle;
+    [SerializeField] DataHandler _dataHandler;
 
     Vector2 _collapsedPositon = new Vector2(200f, -200f);
     Vector2 _expandedPositon = new Vector2(200f, 200f);
@@ -42,6 +44,11 @@ public class UiOptionsPanelHandler : MonoBehaviour
     public void ExitApplicationButtonPressed()
     {
         Application.Quit();
+    }
+
+    public void HideFilteredNodesToggled()
+    {
+        _dataHandler.SetNodesFilteredHidden(!_filterTransparentNodesToggle.isOn);
     }
 
     public IEnumerator StartCollapseAnimation()

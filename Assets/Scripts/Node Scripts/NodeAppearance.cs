@@ -86,6 +86,12 @@ public class NodeAppearance : MonoBehaviour
         }
     }
 
+    public void SetRenderersActive(bool active)
+    {
+        _type1Renderer.enabled = active;
+        _type2Renderer.enabled = active;
+    }
+
     public void SetLightActive(bool enabled)
     {
         _light.enabled = enabled;
