@@ -8794,6 +8794,8 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Speed
       m_Image: {fileID: 0}
+    - m_Text: None
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -16119,6 +16121,8 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Speed
       m_Image: {fileID: 0}
+    - m_Text: None
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -18358,6 +18362,8 @@ MonoBehaviour:
     - m_Text: Special Defense
       m_Image: {fileID: 0}
     - m_Text: Speed
+      m_Image: {fileID: 0}
+    - m_Text: None
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:

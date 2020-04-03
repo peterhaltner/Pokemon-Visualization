@@ -14,18 +14,36 @@ public class UINodeHandler : MonoBehaviour
     public void OnXAxisChange()
     {
         string typeName = _xAxis.options[_xAxis.value].text;
+
+        if (typeName == "None")
+        {
+            typeName = "";
+        }
+
         _dataHandler.UpdateAxisType(DataHandler.Axis.X, typeName);
     }
 
     public void OnYAxisChange()
     {
         string typeName = _yAxis.options[_yAxis.value].text;
+
+        if (typeName == "None")
+        {
+            typeName = "";
+        }
+
         _dataHandler.UpdateAxisType(DataHandler.Axis.Y, typeName);
     }
 
     public void OnZAxisChange()
     {
         string typeName = _zAxis.options[_zAxis.value].text;
+
+        if(typeName == "None")
+        {
+            typeName = "";
+        }
+
         _dataHandler.UpdateAxisType(DataHandler.Axis.Z, typeName);
     }
 

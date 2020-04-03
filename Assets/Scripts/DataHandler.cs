@@ -74,14 +74,6 @@ public class DataHandler : MonoBehaviour
     //TODO: Redesign such that it does not take parameters in
     void SetAxisTypes(AxisTypes xType, AxisTypes yType, AxisTypes zType)
     {
-        //Ensure only one is of type None at most
-        if((xType == AxisTypes.None && (yType == xType || zType == xType)) ||
-            (yType == AxisTypes.None && zType == yType))
-        {
-            Debug.LogError("Can only have one axis type be none at most");
-            return;
-        }
-
         //Change text values of axis
         _axisController.SetAxisText(GetEnumFriendlyText(xType), AxisController.Axises.X);
         _axisController.SetAxisText(GetEnumFriendlyText(yType), AxisController.Axises.Y);
