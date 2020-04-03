@@ -8,7 +8,8 @@ public class CsvReader : MonoBehaviour
     [SerializeField] Transform _pokemonNodesRoot;
     [SerializeField] DataHandler _dataHandler;
 
-    const string _csvPath = "Assets/Data/Pokemon.csv"; //path to Pokemon database
+    const string _csvEditorPath = "Assets/Data/Pokemon.csv"; //path to Pokemon database for Unity Editor
+    const string _csvPlayerPath = "Pokemon.csv"; //path to Pokemon database for Unity Player
 
     //An enum to match the index with column number in CSV
     enum PokemonData
@@ -30,7 +31,17 @@ public class CsvReader : MonoBehaviour
 
     void Awake()
     {
-        string rawData = System.IO.File.ReadAllText(_csvPath); //Read the database file
+        string rawData;
+
+        //Read the database file
+        if (Application.isEditor)
+        {
+            rawData = System.IO.File.ReadAllText(_csvEditorPath); 
+        }
+        else
+        {
+            rawData = System.IO.File.ReadAllText(_csvPlayerPath);
+        }
 
         string[] rawDataLines = rawData.Split("\n"[0]);
 
