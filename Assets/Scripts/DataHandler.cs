@@ -87,7 +87,7 @@ public class DataHandler : MonoBehaviour
         _axisController.SetAxisText(GetEnumFriendlyText(yType), AxisController.Axises.Y);
         _axisController.SetAxisText(GetEnumFriendlyText(zType), AxisController.Axises.Z);
 
-        //Update all Pokemon nodes to have new value (TODO: Make smooth transition)
+        //Update all Pokemon nodes to have new value
         foreach(var node in _pokemonNodes)
         {
             var nodeInfo = node.GetComponent<NodeInformationController>();
@@ -100,6 +100,15 @@ public class DataHandler : MonoBehaviour
             );
 
             StartCoroutine(StartNodeTranslation(node.transform, newNodePositon));
+        }
+    }
+
+    public void SetMaterialType(MaterialHelper.MaterialType newMaterialType)
+    {
+        foreach (var node in _pokemonNodes)
+        {
+            var nodeInfo = node.GetComponent<NodeStateController>();
+            nodeInfo.SetMaterialType(newMaterialType);
         }
     }
 

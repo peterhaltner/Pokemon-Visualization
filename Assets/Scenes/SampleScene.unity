@@ -7966,7 +7966,18 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1728762059}
+        m_MethodName: OnColorsChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &541600833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13647,6 +13658,18 @@ MonoBehaviour:
   _rockTransMaterial: {fileID: 2100000, guid: a85d4f72e273d5346a894f35bf58b94c, type: 2}
   _steelTransMaterial: {fileID: 2100000, guid: bf08de97e85107d4e90c25a9b40ba821, type: 2}
   _waterTransMaterial: {fileID: 2100000, guid: dafcd4a38495d684e8aa0ebcc74cd691, type: 2}
+  _gen1Material: {fileID: 2100000, guid: 716d75fcec1037f419e650a6dd903ff4, type: 2}
+  _gen2Material: {fileID: 2100000, guid: 133c0e20868075049975c0f2a827c536, type: 2}
+  _gen3Material: {fileID: 2100000, guid: efd13d2e7ec276044830f07029ce99f8, type: 2}
+  _gen4Material: {fileID: 2100000, guid: a6f4d3d1b8e619a4498d21ce4de4a2d0, type: 2}
+  _gen5Material: {fileID: 2100000, guid: 01775ff5a640e784c9b34e3148bca511, type: 2}
+  _gen6Material: {fileID: 2100000, guid: 5f672bbb08381e648a6fa7a4dbe873ac, type: 2}
+  _gen1TransMaterial: {fileID: 2100000, guid: f8509c45ff925c1429407c90a30876b4, type: 2}
+  _gen2TransMaterial: {fileID: 2100000, guid: 621f9c4cf3e662945b92458a22ed7254, type: 2}
+  _gen3TransMaterial: {fileID: 2100000, guid: b17ff6173e82fac4ab0aa92bb7d7cddb, type: 2}
+  _gen4TransMaterial: {fileID: 2100000, guid: 1824125453c605a40b26f2476473ee34, type: 2}
+  _gen5TransMaterial: {fileID: 2100000, guid: a60d3f62a4f481b42acbc5f4a1127015, type: 2}
+  _gen6TransMaterial: {fileID: 2100000, guid: 5afd01f4e2292ab42826ed8ad35badab, type: 2}
 --- !u!114 &938062416
 MonoBehaviour:
   m_ObjectHideFlags: 0

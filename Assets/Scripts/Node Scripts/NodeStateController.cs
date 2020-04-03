@@ -20,9 +20,11 @@ public class NodeStateController : MonoBehaviour
 
     bool _isActive;
     State _activeState = State.Default;
+    MaterialHelper.MaterialType _activeMaterialType;
 
     void Start()
     {
+        _activeMaterialType = MaterialHelper.MaterialType.Type;
         SetDefault();
         SetActive(true);
     }
@@ -55,8 +57,16 @@ public class NodeStateController : MonoBehaviour
 
     public void SetActive(bool isActive)
     {
-        _appearance.SetTransparent(!isActive);
         _isActive = isActive;
+
+        _appearance.SetTransparent(!isActive);
+        ApplyMaterialChange();
+    }
+
+    public void SetMaterialType(MaterialHelper.MaterialType newType)
+    {
+        _activeMaterialType = newType;
+        ApplyMaterialChange();
     }
 
     void SetDefault()
@@ -74,5 +84,18 @@ public class NodeStateController : MonoBehaviour
     {
         _appearance.SetLightActive(true);
         _appearance.SetLightColor(SelectedColor);
+    }
+
+    void ApplyMaterialChange()
+    {
+        switch(_activeMaterialType)
+        {
+            case MaterialHelper.MaterialType.Type:
+                _appearance.ApplyTypeMaterial(!_isActive);
+                break;
+            case MaterialHelper.MaterialType.Generation:
+                _appearance.ApplyGenerationMaterial(!_isActive);
+                break;
+        }
     }
 }

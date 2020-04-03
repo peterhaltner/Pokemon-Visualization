@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class MaterialHelper : MonoBehaviour
 {
+    public enum MaterialType
+    {
+        Type,
+        Generation,
+    }
+
     [SerializeField] Material _bugMaterial;
     [SerializeField] Material _darkMaterial;
     [SerializeField] Material _dragonMaterial;
@@ -41,6 +47,20 @@ public class MaterialHelper : MonoBehaviour
     [SerializeField] Material _rockTransMaterial;
     [SerializeField] Material _steelTransMaterial;
     [SerializeField] Material _waterTransMaterial;
+
+    [SerializeField] Material _gen1Material;
+    [SerializeField] Material _gen2Material;
+    [SerializeField] Material _gen3Material;
+    [SerializeField] Material _gen4Material;
+    [SerializeField] Material _gen5Material;
+    [SerializeField] Material _gen6Material;
+
+    [SerializeField] Material _gen1TransMaterial;
+    [SerializeField] Material _gen2TransMaterial;
+    [SerializeField] Material _gen3TransMaterial;
+    [SerializeField] Material _gen4TransMaterial;
+    [SerializeField] Material _gen5TransMaterial;
+    [SerializeField] Material _gen6TransMaterial;
 
     public Material GetMaterial(TypeHelper.Type type, bool isTransparent)
     {
@@ -131,6 +151,52 @@ public class MaterialHelper : MonoBehaviour
                     return _waterTransMaterial; ;
                 default:
                     Debug.LogError("No type specified, no transparent material exists for none");
+                    return null;
+            }
+        }
+    }
+
+    public Material GetMaterial(GenerationHelper.Generations generation, bool isTransparent)
+    {
+        if (!isTransparent)
+        {
+            switch (generation)
+            {
+                case GenerationHelper.Generations.Gen1:
+                    return _gen1Material;
+                case GenerationHelper.Generations.Gen2:
+                    return _gen2Material;
+                case GenerationHelper.Generations.Gen3:
+                    return _gen3Material;
+                case GenerationHelper.Generations.Gen4:
+                    return _gen4Material;
+                case GenerationHelper.Generations.Gen5:
+                    return _gen5Material;
+                case GenerationHelper.Generations.Gen6:
+                    return _gen6Material;
+                default:
+                    Debug.LogError("No generation specified, no material exists for none");
+                    return null;
+            }
+        }
+        else
+        {
+            switch (generation)
+            {
+                case GenerationHelper.Generations.Gen1:
+                    return _gen1TransMaterial;
+                case GenerationHelper.Generations.Gen2:
+                    return _gen2TransMaterial;
+                case GenerationHelper.Generations.Gen3:
+                    return _gen3TransMaterial;
+                case GenerationHelper.Generations.Gen4:
+                    return _gen4TransMaterial;
+                case GenerationHelper.Generations.Gen5:
+                    return _gen5TransMaterial;
+                case GenerationHelper.Generations.Gen6:
+                    return _gen6TransMaterial;
+                default:
+                    Debug.LogError("No generation specified, no transparent material exists for none");
                     return null;
             }
         }

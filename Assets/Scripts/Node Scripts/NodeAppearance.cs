@@ -14,8 +14,9 @@ public class NodeAppearance : MonoBehaviour
     Material _type1TransparentMaterial;
     Material _type2TransparentMaterial;
 
-    //Generation Material
+    //Generation Material + Trans
     Material _generationMaterial;
+    Material _generationTransparentMaterial;
 
     Renderer _type1Renderer;
     Renderer _type2Renderer;
@@ -45,13 +46,14 @@ public class NodeAppearance : MonoBehaviour
             _type2TransparentMaterial = _type1TransparentMaterial;
         }
 
+        //Get Generation Materials
+        var generation = GenerationHelper.ParseGeneration(_nodeInformationController.Generation);
+        _generationMaterial = materialHelper.GetMaterial(generation, false);
+        _generationTransparentMaterial = materialHelper.GetMaterial(generation, true);
+
         //Get the child renderers
         _type1Renderer = transform.GetChild(0).GetComponent<Renderer>();
         _type2Renderer = transform.GetChild(1).GetComponent<Renderer>();
-
-        //temp, set the materials
-        _type1Renderer.material = _type1Material;
-        _type2Renderer.material = _type2Material;
 
         //Get the halo renderer
         _halo = (Behaviour)GetComponent("Halo");
@@ -66,19 +68,16 @@ public class NodeAppearance : MonoBehaviour
         _collider = GetComponent<SphereCollider>();
     }
 
+    //Note: This function does not update the material since it needs state knowledgge
     public void SetTransparent(bool isTransparent)
     {
         if(isTransparent)
         {
-            _type1Renderer.material = _type1TransparentMaterial;
-            _type2Renderer.material = _type2TransparentMaterial;
             _halo.enabled = false;
             _collider.enabled = false;
         }
         else
         {
-            _type1Renderer.material = _type1Material;
-            _type2Renderer.material = _type2Material;
             _halo.enabled = _nodeInformationController.IsLegendary;
             _collider.enabled = true;
         }
@@ -92,5 +91,33 @@ public class NodeAppearance : MonoBehaviour
     public void SetLightColor(Color lightColor)
     {
         _light.color = lightColor;
+    }
+
+    public void ApplyTypeMaterial(bool isTransparent)
+    {
+        if (isTransparent)
+        {
+            _type1Renderer.material = _type1TransparentMaterial;
+            _type2Renderer.material = _type2TransparentMaterial;
+        }
+        else
+        {
+            _type1Renderer.material = _type1Material;
+            _type2Renderer.material = _type2Material;
+        }
+    }
+
+    public void ApplyGenerationMaterial(bool isTransparent)
+    {
+        if (isTransparent)
+        {
+            _type1Renderer.material = _generationTransparentMaterial;
+            _type2Renderer.material = _generationTransparentMaterial;
+        }
+        else
+        {
+            _type1Renderer.material = _generationMaterial;
+            _type2Renderer.material = _generationMaterial;
+        }
     }
 }
