@@ -38,7 +38,7 @@ public class DataHandler : MonoBehaviour
     AxisTypes _yAxisType;
     AxisTypes _zAxisType;
 
-    void Start()
+    public void SetupNodes()
     {
         //Set default axis values - mirrored from default UI settings
         _xAxisType = AxisTypes.HP;
